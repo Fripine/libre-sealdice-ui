@@ -571,7 +571,15 @@
             <!-- <div v-if="form.protocol !== 1" style="color: #aa4422;">提示: 首次登录时，iPad或者Android手表协议一般都会失败，建议用安卓登录后改协议。</div> -->
           </small>
         </el-form-item>
-
+        <el-form-item v-if=" form.accountType === 16" label="账号" :label-width="formLabelWidth" required>
+          <el-input v-model="form.account" type="number" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item v-if=" form.accountType === 16" label="使用自定义签名" :label-width="formLabelWidth" required>
+          <el-switch v-model="form.useSignServer" active-text="启用" inactive-text="关闭" ></el-switch>
+        </el-form-item>
+        <el-form-item v-if=" form.accountType === 16 && form.useSignServer" label="自定义签名地址" :label-width="formLabelWidth" required>
+          <el-input v-model="form.signServerUrl" type="text" autocomplete="off"></el-input>
+        </el-form-item>
         <!-- <el-form-item label="附加参数" :label-width="formLabelWidth">
           <template #label>
             <div style="display: flex; align-items: center;">
